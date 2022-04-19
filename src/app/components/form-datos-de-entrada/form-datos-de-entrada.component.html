@@ -1,0 +1,29 @@
+<form [formGroup]="formDatoEntrada" class="formulario">
+    <div class="formularioCampos">
+        <h1 class="tituloFormulario">Crear Datos de Entrada</h1>
+        <div>
+            <mat-form-field class="campo" appearance="fill">
+                <mat-label>Lugar</mat-label>
+                <mat-select formControlName="Nombre_Lugar" >
+                    <mat-option value="Restaurante Básico" *ngFor="let option of options">
+                        {{option}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="dp3" formControlName="Fecha">
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="campo" appearance="fill">
+                <mat-label>Url Imagen</mat-label>
+                <input matInput formControlName="UrlImagen" >
+            </mat-form-field>
+        </div>
+    </div>
+    <div>
+        <button class="boton" mat-raised-button color="primary" (click)="createDatoEntrada()" type="submit" [disabled]="formDatoEntrada.invalid">Enviar</button>
+        <button class="boton" mat-raised-button color="warn" (click)="limpiarForm()">Limpiar</button>
+    </div>
+</form>

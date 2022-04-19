@@ -1,0 +1,13 @@
+<form [formGroup]="formLugar" class="formulario">
+    <h1 class="tituloFormulario">Crear Lugar</h1>
+    <div>
+        <mat-form-field class="campo" appearance="fill">
+            <mat-label>Nombre Lugar</mat-label>
+            <input matInput formControlName="nombre">
+        </mat-form-field>
+    </div>
+    <div>
+        <button class="boton" mat-raised-button color="primary" (click)="createLugar()" type="submit" [disabled]="formLugar.invalid">Enviar</button>
+        <button class="boton" mat-raised-button color="warn" (click)="limpiarForm()">Limpiar</button>
+    </div>
+</form>

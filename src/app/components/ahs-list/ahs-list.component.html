@@ -1,0 +1,49 @@
+<div class="buscador">
+    <form class="example-form" [formGroup]="filtro">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Calle</mat-label>
+            <input type="text"
+                placeholder="Escoge una"
+                aria-label="Calle"
+                matInput
+                formControlName="nombreLugar"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option" >
+                {{option}}
+            </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <button class="boton" mat-fab color="primary" aria-label="Buscar" (click)="getAhsByPlaceName()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </form>
+</div>
+
+
+
+
+
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let reg of ahs">
+        <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+            <mat-card-title>{{reg.Nombre_Lugar}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{reg.UrlImagen}}">
+        <mat-card-content>
+            <p>
+                Cantidad de personas: {{reg.CantidadPersonas}}
+            </p>
+            <p>
+                Fecha: {{reg.FechaConFormato}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>Ver más</button>
+        </mat-card-actions>
+        </mat-card>
+    </div>
+    </div>
+</div>
